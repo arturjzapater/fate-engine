@@ -1,0 +1,32 @@
+{
+  "name": "fate-engine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arturjzapater/fate-engine.git"
+  },
+  "keywords": [
+    "fate",
+    "character",
+    "rpg",
+    "functional"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arturjzapater/fate-engine/issues"
+  },
+  "homepage": "https://github.com/arturjzapater/fate-engine#readme",
+  "dependencies": {
+    "sanctuary": "^3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-config-pixie": "^1.0.3"
+  }
+}
