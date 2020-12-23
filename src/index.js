@@ -1,20 +1,10 @@
-const S = require('sanctuary')
-const { fromNullable, shuffle, summation } = require('helpers')
+const { makeList } = require('skills')
+
 const skills = require('data/skills.json')
+const ladder = require('data/ladder.json')
 
-const parseInput = S.pipe([
-	fromNullable,
-	S.map(Number),
-	S.fromMaybe(4),
-])
+const input = process.argv[2] ? +process.argv[2] : undefined
 
-const input = parseInput(process.argv[2])
+const list = makeList({ list: skills, ladder })
 
-const takeSummation = S.compose(S.take)(summation)
-
-const makeList = S.pipe([
-	shuffle,
-	takeSummation(input),
-])
-
-console.log(makeList(skills))
+console.log(list(input))

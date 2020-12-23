@@ -1,0 +1,13 @@
+{
+	"8": "Legendary (+8)",
+	"7": "Epic (+7)",
+	"6": "Fantastic (+6)",
+	"5": "Superb (+5)",
+	"4": "Great (+4)",
+	"3": "Good (+3)",
+	"2": "Fair (+2)",
+	"1": "Average (+1)",
+	"0": "Mediocre (+0)",
+	"-1": "Poor (-1)",
+	"-2": "Terrible (-2)"
+}
