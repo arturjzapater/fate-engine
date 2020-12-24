@@ -9,6 +9,13 @@ const makeRow = num => S.pipe([
 	S.fromMaybe([]),
 ])
 
+const makeTiersArray = (ladder, cap) =>
+	skillList =>
+		Array.from(
+			{ length: cap },
+			(_, i) => [ ladder[cap - i], makeRow(i)(skillList) ]
+		)
+
 const checkLength = num =>
 	list =>
 		summation(num) > list.length
@@ -16,11 +23,7 @@ const checkLength = num =>
 			: S.Just(list)
 
 const makeTiers = (ladder, cap) =>
-	skillList =>
-		Array.from(
-			{ length: cap },
-			(_, i) => [ ladder[cap - i], makeRow(i)(skillList) ]
-		)
+	S.compose(Object.fromEntries)(makeTiersArray(ladder, cap))
 
 module.exports = {
 	checkLength,

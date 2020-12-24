@@ -8,8 +8,6 @@ const makeList = ({ list, ladder }) =>
 			shuffle,
 			checkLength(input),
 			S.map(makeTiers(ladder, input)),
-			S.map(Object.fromEntries),
-			S.fromMaybe({}),
 		])(list)
 
 module.exports = {

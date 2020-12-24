@@ -2,6 +2,7 @@ module.exports = {
 	extends: 'pixie',
 	rules: {
 		'max-len': [ 'error', {
+			code: 85,
 			ignoreUrls: true,
 			ignoreTemplateLiterals: true,
 			ignoreRegExpLiterals: true,
