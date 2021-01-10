@@ -3,7 +3,7 @@ const {
 	makeBoxes,
 	makeObject,
 	parseConsequences,
-	parseStress,
+	parseTracks,
 } = require('./helpers')
 
 const makeTrack = ({ track, skill }) =>
@@ -13,18 +13,17 @@ const makeTrack = ({ track, skill }) =>
 		x => [ track, x ],
 	])
 
-const makeStress = tracks =>
+const parseStress = tracks =>
 	list => {
 		const data = tracks.map(x => makeTrack(x)(list))
 		return {
-			tracks: parseStress(data),
+			tracks: parseTracks(data),
 			consequences: parseConsequences(data),
 		}
 	}
 
+const makeStress = tracks => S.map(parseStress(tracks))
+
 module.exports = {
 	makeStress,
-	makeTrack,
-	parseConsequences,
-	parseStress,
 }

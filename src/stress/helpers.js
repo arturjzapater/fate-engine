@@ -18,11 +18,11 @@ const parseConsequences = S.pipe([
 	S.concat([ 'Mild', 'Moderate', 'Severe' ]),
 ])
 
-const parseStress = S.map(([ track, { boxes }]) => [ track, boxes ])
+const parseTracks = S.map(([ track, { boxes }]) => [ track, boxes ])
 
 module.exports = {
 	makeBoxes,
 	makeObject,
 	parseConsequences,
-	parseStress,
+	parseTracks,
 }

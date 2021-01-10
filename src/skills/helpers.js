@@ -10,10 +10,10 @@ const makeRow = num => S.pipe([
 ])
 
 const checkLength = num =>
-list =>
-summation(num) > list.length
-? S.Nothing
-: S.Just(list)
+	list =>
+		summation(num) > list.length
+			? S.Nothing
+			: S.Just(list)
 
 const makeTiers = (cap) =>
 	skillList =>

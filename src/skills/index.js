@@ -2,15 +2,12 @@ const S = require('sanctuary')
 const { shuffle } = require('helpers')
 const { checkLength, makeTiers } = require('./helpers')
 
-const makeList = ({ list }) =>
-	(input = 4) =>
-		S.pipe([
-			shuffle,
-			checkLength(input),
-			S.map(makeTiers(input)),
-			S.fromMaybe([]),
-		])(list)
+const makePyramidList = (tiers) => S.compose(S.map(shuffle))(checkLength(tiers))
+
+const makePyramid = (tiers = 4) =>
+	S.compose(S.map(makeTiers(tiers)))(makePyramidList(tiers))
 
 module.exports = {
-	makeList,
+	makePyramid,
+	makePyramidList,
 }

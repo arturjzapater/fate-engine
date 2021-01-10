@@ -1,6 +1,7 @@
 const util = require('util')
+const S = require('sanctuary')
 
-const { makeList } = require('skills')
+const { makePyramid } = require('skills')
 const { makeStress } = require('stress')
 
 const skills = require('data/skills.json')
@@ -9,14 +10,12 @@ const tracks = require('data/stress.json')
 
 const input = process.argv[2] ? +process.argv[2] : undefined
 
-const list = makeList({ list: skills })
-const stress = makeStress(tracks)
+const list = makePyramid(input)(skills)
+const stress = makeStress(tracks)(list)
 
-const skillList = list(input)
-
-const result = {
-	skills: skillList,
-	stress: stress(skillList),
-}
+const result = S.unchecked.sequence(S.Maybe)({
+	skills: list,
+	stress,
+})
 
 console.log(util.inspect(result, { depth: null, colors: true }))
