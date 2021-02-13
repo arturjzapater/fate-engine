@@ -1,21 +1,26 @@
-const util = require('util')
 const S = require('sanctuary')
 
 const { makePyramid } = require('skills')
 const { makeStress } = require('stress')
 
-const skills = require('data/skills.json')
-const tracks = require('data/stress.json')
-// const ladder = require('data/ladder.json')
+const defSkills = require('data/skills.json')
+const defTracks = require('data/stress.json')
 
-const input = process.argv[2] ? +process.argv[2] : undefined
 
-const list = makePyramid(input)(skills)
-const stress = makeStress(tracks)(list)
+const makeSkills = ({ skills = defSkills, stressTracks = defTracks } = {}) =>
+	cap => {
+		const skillList = makePyramid(cap)(skills)
+		const stress = makeStress(stressTracks)(skillList)
 
-const result = S.unchecked.sequence(S.Maybe)({
-	skills: list,
-	stress,
-})
+		return S.unchecked.sequence(S.Maybe)({
+			skills: skillList,
+			stress,
+		})
+	}
 
-console.log(util.inspect(result, { depth: null, colors: true }))
+module.exports = {
+	skills: {
+		default: makeSkills(),
+		list: makeSkills,
+	},
+}
